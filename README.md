@@ -1,2 +1,0 @@
-# mes_bot
-MES-BOT · PMDT4:e9699785-b2d8-4dc4-a13c-8fc55be21477
