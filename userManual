@@ -3,7 +3,7 @@
 ---
 
 ### Language Selection / Selección de Idioma
-* 🇺🇸 **[English User Manual](#english-user-manual)**
+* **[English User Manual](#english-user-manual)**
   1. [System Overview & Pedagogical Purpose](#1-system-overview--pedagogical-purpose)
   2. [Deployment Option A: Official Robot Target (Arduino Uno Q)](#2-deployment-option-a-official-robot-target-arduino-uno-q)
   3. [Deployment Option B: Alternative / PC Environment (Experimental)](#3-deployment-option-b-alternative--pc-environment-experimental)
@@ -15,7 +15,7 @@
      * [6.3 The Game: Execution, Voice Commands & Manual Driving](#63-the-game-execution-voice-commands--manual-driving)
      * [6.4 Historical Progress Tracking & Analytics](#64-historical-progress-tracking--analytics)
   7. [Troubleshooting & Diagnostics](#7-troubleshooting--diagnostics)
-* 🇪🇸 **[Manual de Usuario en Español](#manual-de-usuario-español)**
+* **[Manual de Usuario en Español](#manual-de-usuario-español)**
   1. [Descripción General y Propósito Pedagógico](#1-descripción-general-y-propósito-pedagógico)
   2. [Opción de Despliegue A: Robot Oficial (Arduino Uno Q)](#2-opción-de-despliegue-a-robot-oficial-arduino-uno-q)
   3. [Opción de Despliegue B: Plataforma Alternativa / PC (Experimental)](#3-opción-de-despliegue-b-plataforma-alternativa--pc-experimental)
