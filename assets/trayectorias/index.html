@@ -1,0 +1,161 @@
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LED Matrix Painter</title>
+    <link rel="icon" type="image/png" href="../common/img/favicon.png" />
+    <link rel="stylesheet" href="../common/css/theme.css">
+    <link rel="stylesheet" href="../common/css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="sabana-bg-pattern">
+    <div id="mesbot-header-container"></div>
+    <script src="../common/libs/common_utils.js"></script>
+    <script>
+        window.MesBotUtils.injectHeader('main_app.header_title_traj', 'main_app.header_subtitle_traj');
+    </script>
+    <div class="container">
+        <main>
+            <div class="main-content">
+
+
+                <div class="center-content">
+                    <div class="center-content-header">
+                        <h3 class="box-title" id="frame-title">Frame 1</h3>
+                        <div class="frame-controls">
+                            <button id="clear" class="transform-btn"><i class="fas fa-eraser" style="margin-right:4px"></i> Clear Frame</button>
+                            <span class="vertical-separator"></span>
+                            <button id="frame-back" class="transform-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button id="frame-forward" class="transform-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <section class="maincol">
+                        <div id="grid" class="grid"></div>
+                        <div id="export-tools">
+                        </div>
+                        <input type="file" id="image-upload" accept="image/*" style="display:none">
+                    </section>
+                </div>
+
+                <div class="controls-section-right">
+                    <div class="sidebar-header">
+                        <h3 class="box-title">Trajectories</h3>
+                    </div>
+                    <div id="trajectory-list" class="trajectory-list"></div>
+                    <div class="trajectory-bulk-actions">
+                        <label class="pdf-layout-control" for="pdf-layout-select">
+                            <span>PDF Layout</span>
+                            <select id="pdf-layout-select" title="PDF card layout">
+                                <option value="2x2">2 x 2</option>
+                                <option value="2x3" selected>2 x 3</option>
+                                <option value="3x3">3 x 3</option>
+                            </select>
+                        </label>
+                        <button id="bulk-pdf-btn" class="bulk-btn" title="Export selected to PDF"><i class="fas fa-file-pdf" style="margin-right:6px"></i> Bulk PDF</button>
+                        <button id="send-email-btn" class="bulk-btn" title="Send selected as PDF via email" style="background:#16A34A;"><i class="fas fa-envelope" style="font-size:12px"></i> Send Email</button>
+                    </div>
+                    <button id="add-trajectory" title="Create new trajectory"><i class="fas fa-plus" style="margin-right:6px"></i> New Trajectory</button>
+                </div>
+            </div>
+        </main>
+        <div class="frames-section-bottom">
+            <div class="controls-section-left">
+                <div class="sidebar-header">
+                    <h3 style="margin:0;font-size:0.9rem;color:#666">Animation</h3>
+                    <div class="anim-buttons">
+                        <button id="play-animation" title="Play Animation"><i class="fas fa-play"></i></button>
+                        <button id="stop-animation" title="Stop Animation"><i class="fas fa-stop"></i></button>
+                    </div>
+                </div>
+                <div class="animation-controls-body">
+                    <div class="animation-options">
+                        <button id="copy-anim" class="anim-option-btn"><i class="fas fa-copy"></i></button>
+                        <button id="delete-anim" class="anim-option-btn"><i class="fas fa-trash-alt"></i></button>
+                        <div class="separator"></div>
+                        <button id="duration-anim" class="anim-option-btn"><i class="fas fa-clock"></i></button>
+                    </div>
+                    <div class="animation-controls-main">
+
+                        <div id="anim-controls">
+                            <input id="anim-name" placeholder="Animation name" />
+                        </div>
+                        
+                        <div id="global-frame-inputs">
+                            <input id="name" placeholder="Frame name (optional)" />
+                            <input id="duration" type="number" min="0" step="10" value="1000" title="Duration in ms" />
+                        </div>
+                        <div id="frames" class="frames"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="error-container" class="error-message" style="display: none;"></div>
+    </div>
+
+    <div id="qr-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-qr-modal" class="close-button">&times;</span>
+            <p class="modal-content-title">Trajectory QR Code</p>
+            <div id="qr-container" style="text-align: center; padding: 20px;">
+                <img id="qr-img" src="" alt="QR Code" style="max-width: 250px; border: 10px solid white; border-radius: 8px;">
+                <p id="qr-text" style="margin-top: 15px; color: #666; font-family: monospace;"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="email-modal" class="modal" style="display:none;">
+        <div class="modal-content" style="max-width:420px;">
+            <span id="close-email-modal" class="close-button">&times;</span>
+            <p class="modal-content-title">Send Report via Email</p>
+            <div style="padding:20px 10px 10px;">
+                <input
+                    id="email-input"
+                    type="email"
+                    placeholder="recipient@example.com"
+                    autocomplete="email"
+                    style="width:100%;padding:12px 16px;border:1.5px solid rgba(0,50,145,0.2);border-radius:10px;font-size:1rem;font-family:inherit;outline:none;box-sizing:border-box;"
+                >
+                <div id="email-input-error" style="color:#EF4444;font-size:0.85rem;margin-top:6px;display:none;"></div>
+                <div id="email-layout-summary" style="margin-top:8px;color:#475569;font-size:0.85rem;text-align:center;"></div>
+                <button
+                    id="email-send-confirm-btn"
+                    style="margin-top:16px;width:100%;padding:13px;background:#16A34A;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.2s;"
+                >Send</button>
+                <div id="email-send-status" style="margin-top:10px;font-size:0.9rem;text-align:center;display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../common/libs/socket.io.min.js"></script>
+    <script src="../common/libs/language_manager.js"></script>
+    <script src="../common/libs/common_utils.js"></script>
+    <script>
+      function setLang(lang) {
+        window.langManager.setLanguage(lang);
+        document.querySelectorAll('.unified-lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`btn-${lang}`).classList.add('active');
+        if (typeof window.loadSettings === 'function') window.loadSettings();
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        await window.langManager.ready;
+        const currentLang = window.langManager.getLanguage();
+        document.querySelectorAll('.unified-lang-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.getElementById(`btn-${currentLang}`);
+        if (activeBtn) activeBtn.classList.add('active');
+      });
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>

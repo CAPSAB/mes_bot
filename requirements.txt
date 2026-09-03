@@ -1,0 +1,14 @@
+
+
+numpy
+Pillow
+reportlab
+qrcode
+smbus2
+pyserial
+
+
+
+Adafruit-Blinka
+adafruit-circuitpython-mpu6050
+adafruit-circuitpython-ina219

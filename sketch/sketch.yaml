@@ -1,0 +1,15 @@
+profiles:
+  default:
+    fqbn: arduino:zephyr:unoq
+    platforms:
+      - platform: arduino:zephyr
+    libraries:
+      - dependency: Arduino_RPClite (0.3.0)
+      - SparkFun BNO080 Cortex Based IMU (1.1.12)
+      - Adafruit INA219 (1.2.3)
+      - Adafruit BusIO (1.17.4)
+      - dependency: Adafruit GFX Library (1.12.6)
+      - dependency: Adafruit NeoPixel (1.15.5)
+      - dependency: Adafruit SSD1306 (2.5.17)
+
+default_profile: default

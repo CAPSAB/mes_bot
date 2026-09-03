@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MES-BOT · Calibración</title>
+  <link rel="stylesheet" href="../common/css/theme.css">
+  <link rel="stylesheet" href="../common/css/responsive.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sabana-bg-pattern">
+  <div id="mesbot-header-container"></div>
+  <main class="calibration-shell">
+    <section class="status-bar" aria-label="Estado de calibración">
+      <div class="status-copy">
+        <span id="connectionState" class="badge">Conectando…</span>
+        <span>Modo <strong id="mode">—</strong></span>
+        <span>Falla <strong id="fault">—</strong></span>
+        <span>Batería <strong id="battery">—</strong></span>
+        <span>Velocidad <strong id="speeds">—</strong></span>
+      </div>
+      <div class="status-actions">
+        <button id="zeroPoseBtn" class="secondary-btn" type="button">Zero pose</button>
+        <button id="stopButton" class="danger" type="button">STOP</button>
+      </div>
+    </section>
+
+    <section class="visual-grid">
+      <article class="panel path-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">POSICIÓN Y RUMBO</span>
+            <h1>Trayectoria 2D</h1>
+          </div>
+          <div class="toolbar">
+            <button id="resetCamBtn" class="mini-btn" type="button">Centrar</button>
+            <button id="clearTrailBtn" class="mini-btn" type="button">Limpiar</button>
+            <label class="toggle-label"><input type="checkbox" id="ghostTargetCheck" checked> Objetivo</label>
+          </div>
+        </div>
+        <div class="viewport-container">
+          <canvas id="twinCanvas" width="760" height="420"></canvas>
+          <div class="twin-hud-overlay compass-hud">
+            <span>Yaw <strong id="hudYaw">0.0°</strong></span>
+            <span>Objetivo <strong id="hudTarget">0.0°</strong></span>
+            <span>Error <strong id="hudError">0.0°</strong></span>
+          </div>
+          <div class="twin-hud-overlay odom-hud">
+            <span>X <strong id="hudX">0 mm</strong></span>
+            <span>Y <strong id="hudY">0 mm</strong></span>
+            <span>Distancia <strong id="hudDist">0 mm</strong></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel camera-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">VERIFICACIÓN VISUAL</span>
+            <h2>Cámara en vivo</h2>
+          </div>
+          <span id="cameraState" class="badge">Esperando</span>
+        </div>
+        <div class="camera-viewport">
+          <canvas id="liveCanvas" width="640" height="480"></canvas>
+          <div id="cameraOverlay" class="camera-overlay">Esperando imagen…</div>
+        </div>
+        <div class="camera-meta">
+          <span id="cameraResolution">—</span>
+          <span id="cameraTimestamp">Sin cuadros</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="forms-grid">
+      <article class="panel compact-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">PERFIL ACTIVO</span>
+            <h2>Constantes</h2>
+          </div>
+          <button id="reloadProfileBtn" class="mini-btn" type="button">Recargar</button>
+        </div>
+        <form id="constantForm" class="compact-form">
+          <label class="wide-field">Buscar constante
+            <input id="constantSearch" type="search" placeholder="PID, velocidad, escala, sensor…" autocomplete="off">
+          </label>
+          <label class="wide-field">Constante
+            <select id="constantSelect" required></select>
+          </label>
+          <label>Valor actual
+            <input id="constantValue" type="number" step="any" required>
+          </label>
+          <button class="primary-btn form-button" type="submit">Aplicar y guardar</button>
+        </form>
+        <div class="value-strip">
+          <span id="constantCount">0 constantes</span>
+          <span id="profileUpdated">Perfil no cargado</span>
+        </div>
+      </article>
+
+      <article class="panel compact-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">ESCALA DE MOVIMIENTO</span>
+            <h2>Ordenado vs. medido</h2>
+          </div>
+          <span id="ratioPreview" class="ratio-pill">× 1.000000</span>
+        </div>
+        <form id="ratioForm" class="compact-form">
+          <label>Ordenado
+            <input name="commanded_value" type="number" value="200" min="0.000001" step="any" required>
+          </label>
+          <label>Medido real
+            <input name="actual_value" type="number" min="0.000001" step="any" placeholder="200.0" required>
+          </label>
+          <label>Unidad
+            <input name="unit" type="text" value="mm" maxlength="16" required>
+          </label>
+          <fieldset id="ratioTargets" class="ratio-targets">
+            <legend>Constantes de escala</legend>
+          </fieldset>
+          <button class="primary-btn form-button" type="submit">Calcular, aplicar y guardar</button>
+        </form>
+        <div class="motion-row" aria-label="Prueba de movimiento actual">
+          <button id="testForwardBtn" type="button">Probar +200</button>
+          <button id="testBackwardBtn" type="button">Probar −200</button>
+          <span id="motionStatusBadge" class="badge">Listo</span>
+        </div>
+      </article>
+    </section>
+
+    <section id="resultBar" class="result-bar" aria-live="polite">Sistema listo.</section>
+  </main>
+
+  <script src="../common/libs/socket.io.min.js"></script>
+  <script src="../common/libs/language_manager.js"></script>
+  <script src="../common/libs/common_utils.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

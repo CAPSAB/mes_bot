@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="main_app.header_experiment_title">EXPERIMENT</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../common/css/theme.css" />
+    <link rel="stylesheet" href="../common/css/responsive.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="sabana-bg-pattern">
+    
+    <div id="mesbot-header-container"></div>
+    <script src="../common/libs/common_utils.js"></script>
+    <script>
+        window.MesBotUtils.injectHeader('main_app.header_title_game', 'main_app.header_subtitle_game');
+    </script>
+
+    
+    <main class="dashboard">
+      
+      <section class="card card-dpad" id="motorControlsContainer">
+        <div class="card-header">
+          <h2 class="card-title" data-i18n="motor_controls.title">Motor Controls</h2>
+        </div>
+        <p class="card-hint" data-i18n="motor_controls.hint">Keyboard: W A S D / Arrow keys</p>
+        <div class="d-pad">
+          <button id="btn-up" class="motor-btn up" onclick="sendMotor('FORWARD')" data-i18n-title="motor_controls.btn_up"></button>
+          <div class="d-pad-middle">
+            <button id="btn-left" class="motor-btn left" onclick="sendMotor('LEFT')" data-i18n-title="motor_controls.btn_left"></button>
+            <button id="btn-stop" class="motor-btn stop" onclick="sendMotor('STOP')" data-i18n-title="motor_controls.btn_stop"></button>
+            <button id="btn-right" class="motor-btn right" onclick="sendMotor('RIGHT')" data-i18n-title="motor_controls.btn_right"></button>
+          </div>
+          <button id="btn-down" class="motor-btn down" onclick="sendMotor('BACKWARD')" data-i18n-title="motor_controls.btn_down"></button>
+        </div>
+      </section>
+
+      
+      <section class="card card-qr" id="qrCard">
+        <div class="card-header">
+          <h2 class="card-title" data-i18n="motor_controls.qr_title">Last QR Scanned</h2>
+        </div>
+        <div id="qrContent" class="qr-empty">
+          <p data-i18n="motor_controls.qr_waiting">Waiting for camera scans…</p>
+        </div>
+      </section>
+
+      
+      <section class="card card-camera" id="cameraCard">
+        <div class="card-header">
+          <h2 class="card-title" data-i18n="motor_controls.cam_title">Live Camera Feed</h2>
+        </div>
+        <div class="camera-wrap">
+          <canvas id="liveCanvas" class="live-canvas"></canvas>
+          <div id="cameraOverlay" class="camera-overlay">
+            <div class="pulse-ring"></div>
+            <span data-i18n="motor_controls.cam_waiting">Waiting for stream…</span>
+          </div>
+        </div>
+      </section>
+
+      
+      <section class="card card-speech" id="speechCard">
+        <div class="card-header">
+          <h2 class="card-title" data-i18n="motor_controls.speech_title">Speech Recognition</h2>
+        </div>
+        <div class="speech-indicator">
+          <div id="speechMic" class="mic-icon mic-idle"></div>
+          <div class="speech-text-block">
+            <div id="speechRaw" class="speech-raw" data-i18n="motor_controls.speech_listening">Listening…</div>
+            <div id="speechCmd" class="badge badge-idle">—</div>
+          </div>
+        </div>
+        <div id="speechLog" class="speech-log"></div>
+      </section>
+
+      
+      <section class="card card-traj" id="trajCard">
+        <div class="card-header">
+          <h2 class="card-title" data-i18n="motor_controls.traj_title">Active Trajectory</h2>
+        </div>
+        <div id="trajEmpty" class="traj-empty" data-i18n="motor_controls.traj_empty">No trajectory loaded yet.</div>
+        <div id="trajInfo" class="traj-info" style="display: none">
+          <div class="traj-name" id="trajName">—</div>
+          <div class="progress-wrap">
+            <div class="progress-bar" id="trajBar" style="width: 0%"></div>
+          </div>
+          <div class="traj-steps" id="trajSteps">0 / 0 steps</div>
+          <div id="trajMistakes" class="badge badge-error" style="display:none; margin-top:8px; font-weight:700;">Mistakes: 0</div>
+        </div>
+      </section>
+
+      
+      <section class="card card-game" id="gameCard">
+        <div class="card-header">
+          <h2 class="card-title" data-i18n="motor_controls.game_title">Game Panel</h2>
+        </div>
+        <div class="game-controls">
+          <label class="game-label" for="playerSelect" data-i18n="motor_controls.game_player">Player</label>
+          <select id="playerSelect" class="player-select">
+            <option value="" data-i18n="motor_controls.game_select_player">— Select Player —</option>
+          </select>
+          <button id="evaluateBtn" class="game-btn eval-btn" onclick="evaluateGame()">
+            <span data-i18n="motor_controls.game_evaluate">Evaluate</span>
+          </button>
+        </div>
+        <div id="gameResult" class="game-result" style="display: none"></div>
+        <button id="recordBtn" class="game-btn record-btn" style="display: none" onclick="recordGame()">
+          <span data-i18n="motor_controls.game_record">Record Result</span>
+        </button>
+      </section>
+          
+      <section class="card card-twin" id="twinCard" style="grid-column: span 2;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <h2 class="card-title">Plano XY (BNO085 + Encoders)</h2>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button id="twinResetCam" class="badge" style="cursor:pointer; border:1px solid #334155; background:#1e293b; color:#38bdf8;">Centrar Vista</button>
+            <button id="twinClearTrail" class="badge" style="cursor:pointer; border:1px solid #334155; background:#1e293b; color:#e2e8f0;">Limpiar Traza</button>
+          </div>
+        </div>
+        <div style="position:relative; width:100%; height:280px; background:#060913; border-radius:0 0 10px 10px; overflow:hidden;">
+          <canvas id="gameTwinCanvas" style="width:100%; height:100%; display:block; cursor:grab;"></canvas>
+          <div style="position:absolute; top:8px; left:8px; display:flex; gap:6px; font-family:monospace; font-size:0.75rem; pointer-events:none;">
+            <span style="background:rgba(15,23,42,0.85); padding:2px 6px; border-radius:4px; border:1px solid #334155; color:#38bdf8;">Yaw: <strong id="gameTwinYaw">0.0°</strong></span>
+            <span style="background:rgba(15,23,42,0.85); padding:2px 6px; border-radius:4px; border:1px solid #334155; color:#4ade80;">X: <strong id="gameTwinX">0 mm</strong></span>
+            <span style="background:rgba(15,23,42,0.85); padding:2px 6px; border-radius:4px; border:1px solid #334155; color:#4ade80;">Y: <strong id="gameTwinY">0 mm</strong></span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+
+    <script src="../common/libs/socket.io.min.js"></script>
+    <script src="../common/libs/language_manager.js"></script>
+    <script src="../common/libs/common_utils.js"></script>
+    <script src="app.js"></script>
+    <script>
+      function setLang(lang) {
+        window.langManager.setLanguage(lang);
+        
+        if (typeof window.loadStrings === 'function') window.loadStrings();
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        await window.langManager.ready;
+        const currentLang = window.langManager.getLanguage();
+        document.querySelectorAll('.unified-lang-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.getElementById(`btn-${currentLang}`);
+        if (activeBtn) activeBtn.classList.add('active');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="auth.welcome_title">MesBot - Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="common/css/theme.css">
+  <link rel="stylesheet" href="common/css/responsive.css">
+  <style>
+     
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: var(--font-inter);
+    }
+
+     
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;  
+      background-image: url('common/img/auth_background.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-color: #001a4d;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;  
+    }
+
+     
+    .login-container {
+      width: 100%;
+      padding: 0 16px 32px;
+    }
+
+     
+    .login-card {
+      width: 100%;
+      background: rgba(248, 249, 252, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 40px 28px 36px;
+      border-radius: 32px;
+      box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.35), 0 40px 60px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: cardRiseUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cardRiseUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+     
+    .shield-icon-box {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shield-icon-box svg {
+      width: 90px;
+      height: 90px;
+    }
+
+     
+    .accent-line {
+      width: 40px;
+      height: 3px;
+      background: #ef4444;
+      margin: 12px auto 24px;
+      border-radius: 2px;
+    }
+
+     
+    .login-card h2 {
+      margin: 0 0 32px;
+      font-family: var(--font-inter);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #002670;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+     
+    .input-group { margin-bottom: 20px; }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1.5px solid #d1d5db;
+      border-radius: 20px;
+      padding: 4px 18px;
+      transition: all 0.25s ease;
+    }
+
+    .input-wrapper:focus-within {
+      border-color: #002670;
+      box-shadow: 0 0 0 4px rgba(0, 38, 112, 0.1);
+    }
+
+    .input-wrapper i.fa-lock {
+      color: #64748b;
+      font-size: 1.2rem;
+      margin-right: 14px;
+      flex-shrink: 0;
+    }
+
+    .input-wrapper input {
+      flex: 1;
+      min-width: 0;
+      padding: 18px 0;
+      border: none;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      outline: none;
+      background: transparent;
+      color: #1e293b;
+    }
+
+    .input-wrapper i.fa-eye-slash,
+    .input-wrapper i.fa-eye {
+      color: #94a3b8;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+
+     
+    .login-btn {
+      width: 100%;
+      padding: 22px;
+      background: #002670;
+      color: #fff;
+      border: none;
+      border-radius: 22px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .login-btn:active {
+      transform: scale(0.97);
+      background: #001a4d;
+    }
+
+     
+    #login-error {
+      color: #ef4444;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: none;
+    }
+
+     
+    @media (max-width: 900px), (orientation: portrait) and (max-width: 1024px) {
+      body {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+        padding: 0;
+        background-image: url('common/img/auth_background_vertical.png');
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 16px 32px;
+      }
+
+      .login-card {
+        width: 100%;
+        animation: cardRiseUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        background: rgba(248, 249, 252, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 36px 24px 32px;
+        border-radius: 28px 28px 0 0;
+        margin-bottom: 0;
+        box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      @keyframes cardRiseUp {
+        from { opacity: 0; transform: translateY(60px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-card h2 { font-size: 1.3rem; margin-bottom: 24px; }
+      .shield-icon-box, .shield-icon-box svg { width: 86px; height: 86px; }
+      .login-btn { padding: 18px; font-size: 1.3rem; }
+    }
+
+     
+    @media (min-width: 901px) and (orientation: landscape) {
+      body {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 15% 0 0;
+        background-image: url('common/img/auth_background.png');
+        background-size: cover;
+        background-position: left center;
+        background-color: #001a4d;
+        overflow: hidden;
+      }
+
+      .login-container {
+        width: auto;
+        max-width: 460px;
+        padding: 0;
+      }
+
+      .login-card {
+        width: 420px;
+        padding: 60px 45px;
+        border-radius: 40px;
+        background: #f8f9fc;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+        animation: cardSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes cardSlideIn {
+        from { opacity: 0; transform: translateX(50px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+
+      .shield-icon-box { width: 140px; height: 140px; }
+      .shield-icon-box svg { width: 125px; height: 125px; }
+      .login-card h2 { font-size: 1.6rem; margin-bottom: 45px; }
+      .login-btn { padding: 24px; font-size: 1.6rem; }
+      .login-btn:hover {
+        background: #001a4d;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 38, 112, 0.3);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="shield-icon-box">
+        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 2 L10 18 V55 C10 80 50 105 50 105 C50 105 90 80 90 55 V18 L50 2 Z" fill="#002670"/>
+          <rect x="28" y="38" width="44" height="34" rx="7" fill="#f8f9fc"/>
+          <circle cx="39" cy="49" r="3.5" fill="#002670"/>
+          <circle cx="61" cy="49" r="3.5" fill="#002670"/>
+          <rect x="42" y="62" width="16" height="2.5" rx="1" fill="#002670"/>
+          <line x1="50" y1="38" x2="50" y2="28" stroke="#f8f9fc" stroke-width="2.5"/>
+          <circle cx="50" cy="28" r="3.5" fill="#f8f9fc"/>
+          <circle cx="25" cy="55" r="4.5" fill="#f8f9fc"/>
+          <circle cx="75" cy="55" r="4.5" fill="#f8f9fc"/>
+        </svg>
+      </div>
+
+      <div class="accent-line"></div>
+
+      <h2 data-i18n="auth.login_title">MES-BOT</h2>
+
+      <div id="login-error" data-i18n="auth.login_error">Acceso denegado</div>
+
+      <form id="login-form">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password-input" required autofocus autocomplete="current-password">
+            <i class="fas fa-eye-slash" id="toggle-password"></i>
+          </div>
+        </div>
+        <button type="submit" class="login-btn">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="common/libs/language_manager.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      if (window.langManager) await window.langManager.ready;
+
+      const loginForm = document.getElementById('login-form');
+      const passwordInput = document.getElementById('password-input');
+      const loginError = document.getElementById('login-error');
+      const togglePassword = document.getElementById('toggle-password');
+
+      togglePassword.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.classList.toggle('fa-eye');
+        togglePassword.classList.toggle('fa-eye-slash');
+      });
+
+      sessionStorage.removeItem('mesbot_auth');
+
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pwd = passwordInput.value;
+        if (pwd === 'M123') {
+          sessionStorage.setItem('mesbot_auth', 'granted');
+          loginError.style.display = 'none';
+          window.location.href = 'main/index.html';
+        } else {
+          loginError.style.display = 'block';
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+name: MES-BOT
+description: Educational robot for voice-guided grid navigation
+ports: []
+bricks:
+- arduino:web_ui: {}
+- arduino:camera_code_detection: {}
+- arduino:dbstorage_sqlstore: {}
+- arduino:keyword_spotting:
+    variables:
+      EI_KEYWORD_SPOTTING_MODEL: /home/arduino/.arduino-bricks/ei-models/kids.eim
+icon: 🤖

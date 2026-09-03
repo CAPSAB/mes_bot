@@ -1,0 +1,269 @@
+MES-BOT Third-Party Notices
+
+This file identifies third-party software and assets distributed with or referenced by MES-BOT. MES-BOT's MPL-2.0 license does not replace the licenses listed below.
+
+Bundled browser library
+
+Socket.IO client 4.8.1
+Copyright 2014-2024 Guillermo Rauch and contributors
+License: MIT
+File: assets/common/libs/socket.io.min.js
+Source: https://github.com/socketio/socket.io
+
+Bundled Python wheels
+
+The wheel archives are stored directly in assets/. Unless noted otherwise, each wheel contains its own authoritative package metadata and license file.
+
+Adafruit-Blinka 9.2.0
+Copyright Adafruit Industries and contributors
+License: MIT
+
+Adafruit-PureIO 1.1.11
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-busdevice 5.2.17
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-connectionmanager 3.1.8
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-ina219 3.5.2
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-mpu6050 1.3.8
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-register 1.12.1
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-requests 4.1.17
+Copyright Adafruit Industries and contributors
+License: MIT
+
+adafruit-circuitpython-typing 1.12.3
+Copyright Adafruit Industries and contributors
+License: MIT
+
+Adafruit-PlatformDetect 3.89.1
+Copyright Adafruit Industries and contributors
+License: MIT
+
+binho-host-adapter 0.1.6
+Copyright 2019 Binho Electronics
+License: MIT
+
+charset-normalizer 3.5.1
+Copyright Ahmed R. Tahri and contributors
+License: MIT
+
+colorama 0.4.6
+Copyright 2010 Jonathan Hartley
+License: BSD-3-Clause
+
+NumPy 2.5.2
+Copyright NumPy developers
+License expression reported by the wheel: BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0
+The wheel contains the applicable NumPy and bundled-component license texts.
+
+Pillow 12.3.0
+Copyright Pillow contributors
+License: MIT-CMU
+
+pyftdi 0.57.2
+Copyright Emmanuel Blot and contributors
+License: BSD-3-Clause
+
+pyserial 3.5
+Copyright Chris Liechti and contributors
+License: BSD
+
+PyUSB 1.3.1
+Copyright 2009-2017 Wander Lairson Costa
+Copyright 2009-2021 PyUSB contributors
+License: BSD-3-Clause
+
+qrcode 8.2
+Copyright Lincoln Loop and contributors
+License: BSD
+
+ReportLab 5.0.1
+Copyright 2000-2025 ReportLab Inc.
+Authors include Andy Robinson, Robin Becker, the ReportLab team, and contributors
+License: BSD
+
+smbus2 0.6.1
+Copyright Karl-Petter Lindegaard and contributors
+License: MIT
+
+typing_extensions 4.16.0
+Copyright Python Software Foundation and contributors
+License: PSF-2.0
+
+Python dependencies installed during first setup
+
+The following packages are downloaded by setup.sh and are not bundled as wheel files in this repository. setup.sh does not currently pin their versions, so the metadata installed on the target system is authoritative.
+
+requests
+Copyright Kenneth Reitz and contributors
+License: Apache-2.0
+Source: https://github.com/psf/requests
+
+sounddevice
+Copyright Matthias Geier and contributors
+License: MIT
+Source: https://github.com/spatialaudio/python-sounddevice
+
+SpeechRecognition
+Copyright Anthony Zhang and contributors
+License: BSD-3-Clause
+Source: https://github.com/Uberi/speech_recognition
+
+opencv-python-headless
+Copyright OpenCV and opencv-python contributors
+Licenses: MIT for the Python packaging; Apache-2.0 for current OpenCV releases
+Source: https://github.com/opencv/opencv-python
+
+pyzbar
+Copyright Lawrence Hudson and contributors
+License: MIT
+The underlying ZBar library has its own license.
+Source: https://github.com/NaturalHistoryMuseum/pyzbar
+
+Flask
+Copyright Pallets contributors
+License: BSD-3-Clause
+Source: https://github.com/pallets/flask
+
+Flask-SocketIO
+Copyright Miguel Grinberg and contributors
+License: MIT
+Source: https://github.com/miguelgrinberg/Flask-SocketIO
+
+python-socketio
+Copyright Miguel Grinberg and contributors
+License: MIT
+Source: https://github.com/miguelgrinberg/python-socketio
+
+eventlet
+Copyright Eventlet contributors
+License: MIT
+Source: https://github.com/eventlet/eventlet
+
+Arduino and microcontroller dependencies
+
+The following libraries are resolved by Arduino App Lab or the Arduino Zephyr board platform. Their source code is not bundled in this repository unless separately identified.
+
+Arduino_RouterBridge 0.4.3
+Copyright Arduino s.r.l., affiliated companies, and contributors
+License: MPL-2.0
+Source: https://github.com/arduino-libraries/Arduino_RouterBridge
+
+Arduino_RPClite 0.3.0
+Copyright Arduino and contributors
+License: MPL-2.0
+Source: https://github.com/arduino-libraries/Arduino_RPCLite
+
+MsgPack 0.4.2
+Copyright Hideaki Tai and contributors
+License: MIT
+Source: https://github.com/hideakitai/MsgPack
+
+DebugLog 0.8.4
+Copyright Hideaki Tai and contributors
+License: MIT
+Source: https://github.com/hideakitai/DebugLog
+
+ArxTypeTraits 0.3.2
+Copyright Hideaki Tai and contributors
+License: MIT
+Source: https://github.com/hideakitai/ArxTypeTraits
+
+ArxContainer 0.7.0
+Copyright Hideaki Tai and contributors
+License: MIT
+Source: https://github.com/hideakitai/ArxContainer
+
+SparkFun BNO080 Cortex Based IMU Library 1.1.12
+Copyright SparkFun Electronics and contributors
+License: MIT
+Source: https://github.com/sparkfun/SparkFun_BNO080_Arduino_Library
+MES-BOT uses this BNO080-compatible library with BNO085 hardware.
+
+Adafruit INA219 1.2.3
+Copyright 2012 Adafruit Industries
+License: BSD-3-Clause
+Source: https://github.com/adafruit/Adafruit_INA219
+
+Adafruit BusIO 1.17.4
+Copyright 2017 Adafruit Industries
+License: MIT
+Source: https://github.com/adafruit/Adafruit_BusIO
+
+Adafruit GFX Library 1.12.6
+Copyright 2012 Adafruit Industries and contributors
+License: BSD
+Source: https://github.com/adafruit/Adafruit-GFX-Library
+
+Adafruit NeoPixel 1.15.5
+Copyright Adafruit Industries and contributors
+License: LGPL-3.0
+Source: https://github.com/adafruit/Adafruit_NeoPixel
+
+Adafruit SSD1306 2.5.17
+Copyright Adafruit Industries and contributors
+License: BSD
+Source: https://github.com/adafruit/Adafruit_SSD1306
+
+Arduino_LED_Matrix, Wire, and SPI are provided by the Arduino Zephyr board platform. Their applicable notices and license texts are distributed with that platform.
+
+Arduino App Lab bricks
+
+The Web UI, Camera Code Detection, SQL Database Storage, and Keyword Spotting bricks are supplied by Arduino App Lab. Their applicable license notices are distributed with App Lab and the installed brick packages.
+
+Fonts
+
+Open Sans variable font
+Copyright 2020 The Open Sans Project Authors
+License: SIL Open Font License 1.1
+Files: assets/common/fonts/Open Sans/
+The complete license is stored at assets/common/fonts/Open Sans/OFL.txt.
+
+Roboto Mono variable font
+Copyright 2015 The Roboto Mono Project Authors
+License: SIL Open Font License 1.1
+Files: assets/common/fonts/Roboto/
+The included license is stored at assets/common/fonts/Roboto/OFL.txt.
+
+Arduino-derived frontend material
+
+Portions derived from Arduino App Lab example frontend material:
+Copyright Arduino s.r.l., Arduino SA, affiliated companies, and contributors
+License: MPL-2.0
+The canonical MPL-2.0 text is stored in license.txt.
+
+Edge Impulse deployment
+
+assets/models/kids.eim is an Edge Impulse Linux deployment containing the project-trained MES-BOT keyword-spotting model and its deployment runtime. The trained model recognizes five Spanish commands. Redistribution remains subject to the project owner's Edge Impulse account terms and any licenses included in the generated deployment.
+Product information: https://edgeimpulse.com/
+
+Institutional marks and project media
+
+The Universidad de La Sabana and CAPSAB names and logos remain the property of their respective rights holders. Their inclusion does not grant trademark rights.
+
+The following project media are not automatically licensed under the software licenses listed above:
+- assets/common/img/logo_sabana.svg
+- assets/common/img/logo_capsab.png
+- assets/common/img/auth_background.png
+- assets/common/img/auth_background_vertical.png
+- assets/common/img/background.png
+- assets/common/sounds/MusicaFondo.mp3
+- assets/common/uno_q_architecture.pdf
+- assets/common/role_workflow.pdf
+
+The project maintainer must confirm authorship or redistribution permission for these media before a public release.

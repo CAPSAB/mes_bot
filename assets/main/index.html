@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="main_app.window_title">MesBot - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../common/css/theme.css">
+  <link rel="stylesheet" href="../common/css/responsive.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sabana-bg-pattern">
+
+  <div id="mesbot-header-container"></div>
+  
+  <main id="main-dashboard">
+    <div class="cards-container">
+      <div onclick="MesBotUtils.openModule('../trayectorias/')" class="nav-card">
+        <div class="card-icon"><i class="fas fa-route"></i></div>
+        <div class="card-title" data-i18n="motor_controls.traj_title">TRAYECTORIAS</div>
+        <div class="card-desc" data-i18n="motor_controls.traj_desc">Diseño y programación de secuencias de movimiento.</div>
+      </div>
+
+      <div onclick="MesBotUtils.openModule('../usuarios/')" class="nav-card">
+        <div class="card-icon"><i class="fas fa-users"></i></div>
+        <div class="card-title" data-i18n="analytics.users_card_title">JUGADORES</div>
+        <div class="card-desc" data-i18n="analytics.users_card_desc">Gestión de jugadores y registro de resultados.</div>
+      </div>
+
+      <div onclick="MesBotUtils.openModule('../motor/')" class="nav-card">
+        <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+        <div class="card-title" data-i18n="motor_controls.card_title">JUEGO</div>
+        <div class="card-desc" data-i18n="motor_controls.card_desc">Control manual del robot y panel de evaluación.</div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../common/libs/socket.io.min.js"></script>
+  <script src="../common/libs/language_manager.js"></script>
+  <script src="../common/libs/common_utils.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

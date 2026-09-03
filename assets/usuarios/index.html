@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesbot Users</title>
+    <link rel="stylesheet" href="../common/css/theme.css">
+    <link rel="stylesheet" href="../common/css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="sabana-bg-pattern">
+    <div id="mesbot-header-container"></div>
+    <script src="../common/libs/common_utils.js"></script>
+    <script>
+        window.MesBotUtils.injectHeader('main_app.header_title_players', 'main_app.header_subtitle_players');
+    </script>
+
+    <div class="container">
+        <div id="user-grid" class="user-grid">
+            
+        </div>
+    </div>
+
+    <button class="fab primary-btn" id="add-user-btn">
+      <i class="fas fa-plus"></i>
+    </button>
+
+    
+    <div id="history-modal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <button type="button" class="close-btn" id="close-history" aria-label="Close history" title="Close history">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <h2 id="history-modal-title">Game History</h2>
+            <div id="history-list" class="history-list">
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="user-modal" class="modal character-creator">
+        <div class="creator-container">
+            <button type="button" class="close-btn creator-close-btn" id="close-user-modal" aria-label="Close avatar editor" title="Close avatar editor">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            
+            <div class="creator-layout">
+                
+                <div class="creator-preview-zone">
+                    <div id="hero-preview-card" class="preview-card">
+                        <button type="button" id="randomize-btn" class="dice-btn" title="Magic Randomizer">
+                            <i class="fas fa-dice"></i>
+                        </button>
+                        <div class="preview-hero-wrapper">
+                            <div id="hero-preview" class="big-hero-icon pulse-animation">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <input type="text" id="user-name" class="hero-name-input" required data-i18n-placeholder="avatar.name_placeholder" autocomplete="off" maxlength="12">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="creator-selection-zone">
+                    <form id="user-form">
+                        <input type="hidden" id="user-id">
+                        
+                        <div class="form-group">
+                            <label data-i18n="avatar.label_hero">Pick your Hero</label>
+                            <div class="avatar-selector kid-grid">
+                                <label data-i18n-title="avatar.robot"><input type="radio" name="avatar" value="fas fa-robot" checked> <i class="fas fa-robot"></i></label>
+                                <label data-i18n-title="avatar.astronaut"><input type="radio" name="avatar" value="fas fa-user-astronaut"> <i class="fas fa-user-astronaut"></i></label>
+                                <label data-i18n-title="avatar.ninja"><input type="radio" name="avatar" value="fas fa-user-ninja"> <i class="fas fa-user-ninja"></i></label>
+                                <label data-i18n-title="avatar.superhero"><input type="radio" name="avatar" value="fas fa-mask"> <i class="fas fa-mask"></i></label>
+                                <label data-i18n-title="avatar.rocket"><input type="radio" name="avatar" value="fas fa-rocket"> <i class="fas fa-rocket"></i></label>
+                                <label data-i18n-title="avatar.wizard"><input type="radio" name="avatar" value="fas fa-magic-wand-sparkles"> <i class="fas fa-magic-wand-sparkles"></i></label>
+                                <label data-i18n-title="avatar.monster"><input type="radio" name="avatar" value="fas fa-spaghetti-monster-flying"> <i class="fas fa-spaghetti-monster-flying"></i></label>
+                                <label data-i18n-title="avatar.dragon"><input type="radio" name="avatar" value="fas fa-dragon"> <i class="fas fa-dragon"></i></label>
+                                <label data-i18n-title="avatar.ghost"><input type="radio" name="avatar" value="fas fa-ghost"> <i class="fas fa-ghost"></i></label>
+                                <label data-i18n-title="avatar.graduate"><input type="radio" name="avatar" value="fas fa-user-graduate"> <i class="fas fa-user-graduate"></i></label>
+                                <label data-i18n-title="avatar.spy"><input type="radio" name="avatar" value="fas fa-user-secret"> <i class="fas fa-user-secret"></i></label>
+                                <label data-i18n-title="avatar.cat"><input type="radio" name="avatar" value="fas fa-cat"> <i class="fas fa-cat"></i></label>
+                                <label data-i18n-title="avatar.dog"><input type="radio" name="avatar" value="fas fa-dog"> <i class="fas fa-dog"></i></label>
+                                <label data-i18n-title="avatar.spider"><input type="radio" name="avatar" value="fas fa-spider"> <i class="fas fa-spider"></i></label>
+                                <label data-i18n-title="avatar.meteor"><input type="radio" name="avatar" value="fas fa-meteor"> <i class="fas fa-meteor"></i></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-i18n="avatar.label_color">Pick your Power Color</label>
+                            <div class="color-picker-container kid-style">
+                                <input type="color" id="user-color" value="#3b82f6" class="kid-color-input">
+                                <div class="color-presets kid-palette">
+                                    <span class="color-dot" style="background:#ef4444" data-i18n-title="avatar.red" data-color="#ef4444"></span>
+                                    <span class="color-dot" style="background:#f97316" data-i18n-title="avatar.orange" data-color="#f97316"></span>
+                                    <span class="color-dot" style="background:#eab308" data-i18n-title="avatar.yellow" data-color="#eab308"></span>
+                                    <span class="color-dot" style="background:#22c55e" data-i18n-title="avatar.green" data-color="#22c55e"></span>
+                                    <span class="color-dot" style="background:#06b6d4" data-i18n-title="avatar.cyan" data-color="#06b6d4"></span>
+                                    <span class="color-dot" style="background:#3b82f6" data-i18n-title="avatar.blue" data-color="#3b82f6"></span>
+                                    <span class="color-dot" style="background:#a855f7" data-i18n-title="avatar.purple" data-color="#a855f7"></span>
+                                    <span class="color-dot" style="background:#ec4899" data-i18n-title="avatar.pink" data-color="#ec4899"></span>
+                                    <span class="color-dot" style="background:#1e1b4b" data-i18n-title="avatar.navy" data-color="#1e1b4b"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn huge-btn"><span data-i18n="avatar.btn_ready">I'M READY!</span> <i class="fas fa-rocket"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <script src="../common/libs/language_manager.js"></script>
+    <script src="../common/libs/common_utils.js"></script>
+    <script>
+      function setLang(lang) {
+        window.langManager.setLanguage(lang);
+        document.querySelectorAll('.unified-lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`btn-${lang}`).classList.add('active');
+        if (typeof window.refreshGrid === 'function') window.refreshGrid();
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        await window.langManager.ready;
+        const currentLang = window.langManager.getLanguage();
+        document.querySelectorAll('.unified-lang-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.getElementById(`btn-${currentLang}`);
+        if (activeBtn) activeBtn.classList.add('active');
+      });
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
